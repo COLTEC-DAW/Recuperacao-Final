@@ -5,6 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Document</title>
+        <script data-require="angular.js@1.4.6" data-semver="1.4.6" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.6/angular.min.js"></script>
+        <script src="app.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     </head>
 
@@ -13,26 +15,33 @@
             <form class="form-signin">
                 <img class="mb-4" src="github_logo.jpg" alt="" width="72" height="72">
                 <h1 class="h3 mb-3 font-weight-normal">Consulta de usuários do Github</h1>
-                <input width="250" ng-model="nome" type="text" id="username" class="form-control" placeholder="Digite seu username aqui" required autofocus>
-                <button type="button" class="btn btn-primary" data-toggle="modal" href="" data-target="#exampleModal">Enviar</button>
+                <input width="250" type="text" ng-model="nome" id="nome" class="form-control" placeholder="Digite seu username aqui" required autofocus>
+                <button type="button" ng-click="userCtrl.getUser(nome)" class="btn btn-primary" data-toggle="modal" href="" data-target="#exampleModal">Enviar</button>
                 <p class="mt-5 mb-3 text-muted">Trabalho de DAW</p>
             </form>
 
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <h2>{{user.name}}</h2>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+            <h2>Seu nome é {{userCtrl.user.name}}</h2>
+
+            <input id="search" type="text" ng-model="search" placeholder="Digite o nome do repositório">
+
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Collapsible Group Item #2
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo">
+                    <div class="card-body">
+                        <div ng-repeat="repo in userCtrl.repositorios | filter:search">
+                            <a class="btn btn-primary" data-toggle="collapse" href="#{{repo.name}}" role="button" aria-expanded="false" aria-controls="collapseExample">{{repo.name}}</a>
+
+                            <div class="collapse" id="{{repo.name}}">
+                                <div class="card card-body">
+                                    <p>{{repo.name}}</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -4,7 +4,7 @@ app.factory('GithubService', function($http){
     var userService = {};
 
     userService.getInfo = function(nome, callback) {
-        $http.get('https://api.github.com/users/' + nome + '.json').then(function(response) {
+        $http.get('https://api.github.com/users/' + nome).then(function(response) {
           var answer = response.data;
           callback(answer);
         },
@@ -15,7 +15,7 @@ app.factory('GithubService', function($http){
     };
       
     userService.getRepositorios = function(nome, callback){
-      $http.get('https://api.github.com/users/' + nome + '/repos' + '.json').then(function(response) {
+      $http.get('https://api.github.com/users/' + nome + '/repos').then(function(response) {
         var answer = response.data;
         callback(answer);
       },
@@ -31,11 +31,22 @@ app.factory('GithubService', function($http){
 app.controller('UserController', ['GithubService', function(userService){
   var self = this;
   self.user = {};
+  self.repositorios = [];
 
   this.getUser = function(nome) {
     userService.getInfo(nome, function(answer) {
       if (answer !== null) {                
         self.user = answer;
+      }
+    });
+    self.getRepositorios(nome);
+  }
+
+  this.getRepositorios = function(nome) {
+    userService.getRepositorios(nome, function(answer) {
+      if (answer !== null) {                
+        self.repositorios = answer;
+        console.log(self.repositorios);
       }
     });
   }
