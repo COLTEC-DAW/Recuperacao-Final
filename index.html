@@ -4,38 +4,60 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Document</title>
+        <title>Recuperação Final</title>
         <script data-require="angular.js@1.4.6" data-semver="1.4.6" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.6/angular.min.js"></script>
         <script src="app.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     </head>
 
     <body class="text-center" ng-app="github">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                    <a class="navbar-brand" href="#">Consulta ao GitHub</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                      <nav class="navbar navbar-dark bg-dark ">
+                            <form class="form-inline">
+                              <div class="input-group">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text" id="basic-addon1">@</span>
+                                </div>
+                                <input width="250" type="text" ng-model="nome" id="nome" class="form-control" placeholder="Username" required autofocus>
+                            </div>
+                            </form>
+
+                            <form class="form-inline my-2 my-lg-0">
+                                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#exampleModal" >Biografia</button>
+                            </form>
+
+                          </nav>
+                  </nav>
+                  
+
         <div ng-controller="UserController as userCtrl">
             <form class="form-signin">
-                <img class="mb-4" src="github_logo.jpg" alt="" width="72" height="72">
-                <h1 class="h3 mb-3 font-weight-normal">Consulta de usuários do Github</h1>
-                <input width="250" type="text" ng-model="nome" id="nome" class="form-control" placeholder="Digite seu username aqui" required autofocus>
-                <button type="button" ng-click="userCtrl.getUser(nome)" class="btn btn-primary" data-toggle="modal" href="" data-target="#exampleModal">Enviar</button>
-                <p class="mt-5 mb-3 text-muted">Trabalho de DAW</p>
-            </form>
+                <button  class="btn btn-outline-secondary btn-lg btn-block" type="button" ng-click="userCtrl.getUser(nome)" class="btn btn-primary">Buscar dados</button><br>
+                <img class="mb-4" src="images/github_logo.jpg" alt="" width="72" height="72">
+                </form>
 
-            <h2>Seu nome é {{userCtrl.user.name}}</h2>
+            <h2>Bem vindo {{userCtrl.user.name}}</h2>
+            
 
-            <input id="search" type="text" ng-model="search" placeholder="Digite o nome do repositório">
 
             <div class="card">
                 <div class="card-header" id="headingTwo">
                     <h5 class="mb-0">
                         <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Collapsible Group Item #2
+                        <h3>Repositórios</h3>                
+                        <input id="search" type="text" ng-model="search" placeholder="Filtrar">
+
                         </button>
                     </h5>
                 </div>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo">
                     <div class="card-body">
                         <div ng-repeat="repo in userCtrl.repositorios | filter:search">
-                            <a class="btn btn-primary" data-toggle="collapse" href="#{{repo.name}}" role="button" aria-expanded="false" aria-controls="collapseExample">{{repo.name}}</a>
+                            <a class="btn btn-outline-dark" data-toggle="collapse" href="#{{repo.name}}" role="button" aria-expanded="false" aria-controls="collapseExample">{{repo.name}}</a>
 
                             <div class="collapse" id="{{repo.name}}">
                                 <div class="card card-body">
@@ -46,6 +68,40 @@
                     </div>
                 </div>
             </div>
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" ng-controller="UserController as userCtrl">
+                <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Biografia</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                                <div class="card" style="width: 29rem;">
+                                        <img class="mb-4" src="images/git_img.jpg" alt="Card image cap"  height="300">
+
+                                        <div class="card-body" ng-controller="UserController as userCtrl">
+                                          <h5 class="card-title">{{userCtrl.user.name}}</h5>
+                                          <p class="card-text">{{userCtrl.user.bio}}</p>
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                          <li class="list-group-item">Login: {{userCtrl.user.login}}</li>
+                                          <li class="list-group-item">Empresa: {{userCtrl.user.company}}</li>
+                                          <li class="list-group-item">Email: {{userCtrl.user.email}}</li>
+                                          <li class="list-group-item">Criado em: {{userCtrl.user.created_at}}</li>
+                                        </ul>
+                                        <div class="card-body">
+                                          <a href="#" class="card-link">Card link</a>
+                                        </div>
+                                      </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
         </div>
 
 
