@@ -40,7 +40,7 @@
                 <img class="mb-4" src="images/github_logo.jpg" alt="" width="72" height="72">
                 </form>
 
-            <h2>Bem vindo {{userCtrl.user.name}}</h2>
+            <h2>Bem vindo, {{userCtrl.user.name}}!</h2>
             
 
 
@@ -61,14 +61,16 @@
 
                             <div class="collapse" id="{{repo.name}}">
                                 <div class="card card-body">
-                                    <p>{{repo.name}}</p>
+                                    <h3>Nome do repositório: {{repo.name}}</h3>
+                                    <p>Descrição: {{repo.description}}</p>
+                                    <p>Data da última atualização: {{repo.pushed_at}}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" ng-controller="UserController as userCtrl">
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -81,7 +83,7 @@
                                 <div class="card" style="width: 29rem;">
                                         <img class="mb-4" src="images/git_img.jpg" alt="Card image cap"  height="300">
 
-                                        <div class="card-body" ng-controller="UserController as userCtrl">
+                                        <div class="card-body">
                                           <h5 class="card-title">{{userCtrl.user.name}}</h5>
                                           <p class="card-text">{{userCtrl.user.bio}}</p>
                                         </div>
