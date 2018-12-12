@@ -10,3 +10,9 @@
     bottom: 0;
     width: 100%;
   }
+
+  .footer {
+    background: #ecf0f1;
+    line-height: 50px;
+    padding: 0 20px;
+  }

@@ -15,6 +15,7 @@
 
     <body class="text-center" ng-app="github">
         <div class="">
+            <!-- Navbar -->
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                     <a class="navbar-brand" href="#">Consulta ao GitHub</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,7 +34,6 @@
                             <form class="form-inline my-2 my-lg-0">
                                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#exampleModal" >Biografia</button>
                             </form>
-
                           </nav>
                   </nav>
                   
@@ -47,7 +47,7 @@
             <h2>Bem vindo {{userCtrl.user.name}}!</h2>
             
 
-
+            <!-- Repositórios -->
             <div class="card">
                 <div class="card-header" id="headingTwo">
                     <h5 class="mb-0">
@@ -73,6 +73,8 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Modal -->
             <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog " role="document">
                       <div class="modal-content">
@@ -114,11 +116,14 @@
                     </div>
                   </div>
         </div>
-
-
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     </div>
+      <!-- Footer -->
+            <footer class="footer page-footer font-small darks">
+                <div class="footer footer-copyright text-center py-3">© 2018 Trabalho de Recuperação Final DAW
+                </div>
+            </footer>
     </body>
 </html>
