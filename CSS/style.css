@@ -1,0 +1,31 @@
+/*Arquivo de estilo CSS*/
+html {
+    display: table;
+    margin: auto;
+    text-align: center;
+}
+
+body {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+h1{
+   font-size: 40px;
+   font-family: 'sans-serif';
+   vertical-align: middle;
+   text-align: center;
+}
+
+h2{
+    font-size: 25px;
+    font-family: 'sans-serif';
+    vertical-align: middle;
+    text-align: center;
+ }
+
+ .navigation{
+    font-size: 25px;
+    font-family: 'Gill Sans';
+ }
